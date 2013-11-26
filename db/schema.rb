@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131125195239) do
+ActiveRecord::Schema.define(version: 20131126012709) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 20131125195239) do
   create_table "districts", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number",     null: false
   end
 
   create_table "games", force: true do |t|
@@ -37,12 +38,12 @@ ActiveRecord::Schema.define(version: 20131125195239) do
   end
 
   create_table "rounds", force: true do |t|
-    t.integer  "rounds_tribs_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "number",     null: false
   end
 
-  create_table "rounds_tribs", force: true do |t|
+  create_table "rounds_tributes", force: true do |t|
     t.integer  "tribute_id"
     t.integer  "round_id"
     t.datetime "created_at"
@@ -50,14 +51,13 @@ ActiveRecord::Schema.define(version: 20131125195239) do
   end
 
   create_table "sponsors", force: true do |t|
-    t.integer  "citizen_id_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "citizen_id"
   end
 
   create_table "tributes", force: true do |t|
     t.integer  "rounds_tribs_id"
-    t.integer  "citizen_id_id"
     t.string   "rating"
     t.string   "skill"
     t.datetime "created_at"

@@ -2,9 +2,10 @@ require 'spec_helper'
 
 describe Game do
   describe '::new' do
-    let (:game) { Game.new("New Game") }
+    let (:game) { Game.new(zone: 6) }
+
     it "creates a new game" do
-      expect(game).to_not eq nil
+      expect(game).to be_an_instance_of Game
     end
       
     it "has 6 zones" do
